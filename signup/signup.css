@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "Open Sans", sans-serif;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    background: #eceef1;
+    min-height: 100vh;
+}
+
+.form {
+    width: 500px;
+    padding: 30px;
+    text-align: center;
+    background: #fff;
+    align-self: center;
+    box-shadow: 0 1px 10px 0 #b3b3b3;
+}
+
+.form .heading {
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.form-group__label,
+.form-message {
+    text-align: left;
+}
+
+.form-group__label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1.7rem;
+}
+
+.form-group__input {
+    padding: 12px;
+    font-size: 1.6rem;
+    outline: none;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+}
+
+.form-group__input:hover {
+    border-color: #0077c5;
+    box-shadow: 0 1px 10px 0 #ddeefb;
+}
+
+.form-submit {
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding: 16px;
+    width: 100%;
+    background-color: rgba(0,119,197,0.8);
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: rgba(0,119,197,1);
+}
+
+.form-group__message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+    text-align: left;
+    color: #f33a58;
+}
+
+.popup {
+    width: 300px;
+    height: 220px;
+    background-color: #fff;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 1px 10px 0 #b3b3b3;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    /* visibility: hidden; */
+}
+
+.popup__tick {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-top: -60px;
+    margin-bottom: 30px;
+}
+
+.popup__button {
+    width: 100%;
+    cursor: pointer;
+    margin-top: 30px;
+    padding: 8px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    background-color: #6fd649;
+    color: #fff;
+    box-shadow: 0 1px 5px 0 #b3b3b3;
+}
+
+.popup__button:hover {
+    background-color: #37e030;
+}
+
+.popup__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.popup__subtitle {
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
