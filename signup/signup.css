@@ -25,7 +25,7 @@ html {
     box-shadow: 0 1px 10px 0 #b3b3b3;
 }
 
-.form .heading {
+.form-heading {
     font-size: 3rem;
     margin-bottom: 50px;
 }
@@ -36,15 +36,11 @@ html {
     margin-bottom: 30px;
 }
 
-.form-group__label,
-.form-message {
-    text-align: left;
-}
-
 .form-group__label {
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 1.7rem;
+    text-align: left;
 }
 
 .form-group__input {
@@ -80,8 +76,7 @@ html {
 
 .form-group__message {
     font-size: 1.2rem;
-    line-height: 1.6rem;
-    padding: 4px 0 0;
+    line-height: 2rem;
     text-align: left;
     color: #f33a58;
 }
@@ -99,7 +94,6 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    /* visibility: hidden; */
 }
 
 .popup__tick {
