@@ -1,69 +1,96 @@
-var isName, isEmail, isPwd, confirm;
+let fullName = document.getElementById("fullname");
+let email = document.getElementById("email");
+let psw = document.getElementById("password");
+let confirmPsw = document.getElementById("password_confirmation");
 
-// check full name
-var fullName = document.getElementById("fullname");
-fullName.addEventListener("change", () => {
-    var regName = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g;
-    if(!regName.test(fullName.value)) {
-        fullName.nextElementSibling.innerHTML = "Please enter your full name";
-        isName = false;
-    }
-    else {
-        fullName.nextElementSibling.innerHTML = "";
-        isName = true;
-    }
-});
+let submitButton = document.getElementById("submitBtn");
+let errorMsg = document.getElementsByClassName("errorMsg");
 
-// check email
-var email = document.getElementById("email");
-var checkEmail = email.addEventListener("change", () => {
-    var regEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    if(!regEmail.test(email.value)) {
-        email.nextElementSibling.innerHTML = "Please enter your email";
-        isEmail = false;
-    }
-    else{
-        email.nextElementSibling.innerHTML = "";
-        isEmail = true;
-    }
-});
-
-// check password
-var firstPass = document.getElementById("password");
-var secondPass = document.getElementById("password_confirmation");
-firstPass.addEventListener("change", () => {
-    var regPass = /^(?=.*[a-z])(?=.*[A-Z]).{8,32}$/;
-    secondPass.value = '';
-    if(!regPass.test(firstPass.value)) {
-        firstPass.nextElementSibling.innerHTML = "Wrong password";
-        isPwd = false;
-    }
-    else{
-        firstPass.nextElementSibling.innerHTML = "";
-        isPwd = true;
-    }
-});
-
-secondPass.addEventListener("change", () => {
-    if(firstPass.value != secondPass.value) {
-        secondPass.nextElementSibling.innerHTML = "No matching";
-        confirm = false;
-    }
-    else {
-        secondPass.nextElementSibling.innerHTML = "";
-        confirm = true;
-    }
-});
-
-// submit and show popup
-var submitButton = document.querySelector(".form-submit");
-submitButton.addEventListener("click", () => {
-    if(isName && isEmail && isPwd && confirm) {
+submitButton.addEventListener("click", handleSubmit);
+function handleSubmit() {
+    let isValid = checkValidate();
+    if(isValid) {
         document.getElementById("popup-signup").classList.add("show");
         document.getElementById("form-signup").classList.add("hidden");
     }
-});
+}
+
+function checkValidate() {
+    let isValid = true;
+    
+    let fullnameValue = fullName.value;
+    let emailValue = email.value;
+    let pswValue = psw.value;
+    let confirmPswValue = confirmPsw.value;
+
+    if(fullnameValue == "") {
+        setError(0, "Username cannot be blank");
+        isValid = false;
+        console.log("test");
+    }
+    else if(!isValidName(fullnameValue)){
+        setError(0, "Invalid full name");
+        isValid = false;
+    }
+    else setSuccess(0);
+
+    if(emailValue == "") {
+        setError(1, "Email cannot be blank");
+        isValid = false;
+    }
+    else if(!isValidEmail(emailValue)){
+        setError(1, "Invalid email");
+        isValid = false;
+    }
+    else setSuccess(1);
+
+    if(pswValue == "") {
+        setError(2, "Password cannot be blank");
+        isValid = false;
+    }
+    else if(!isValidPsw(pswValue)){
+        setError(2, "Invalid password");
+        isValid = false;
+    }
+    else setSuccess(2);
+
+    if(confirmPswValue == "") {
+        setError(3, "Password confirmation cannot be blank");
+        isValid = false;
+    }
+    else if(pswValue != confirmPswValue) {
+        setError(3, "The password confirmation does not match");
+        isValid = false;
+    }
+    else setSuccess(3);
+
+    return isValid;
+}
+
+function setError(index, message){
+    errorMsg[index].innerHTML = message;
+}
+
+function setSuccess(index) {
+    errorMsg[index].innerHTML = "";
+}
+
+function isValidName(name) {
+    const REG_NAME = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/g;
+    return REG_NAME.test(name);
+}
+
+function isValidEmail(email) {
+    const REG_EMAIL = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return REG_EMAIL.test(email);
+}
+
+function isValidPsw(password) {
+    const REG_PSW = /^(?=.*[a-z])(?=.*[A-Z]).{8,32}$/;
+    return REG_PSW.test(password);
+}
 
 function closePopup() {
     document.getElementById("popup-signup").classList.remove("show");
-    document.getElementById("form-signup").classList.remove("hidden");}
+    document.getElementById("form-signup").classList.remove("hidden");
+}

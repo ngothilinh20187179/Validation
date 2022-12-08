@@ -19,32 +19,32 @@
                 <label for="fullname" class="form-group__label">Full Name</label>
                 <input id="fullname" name="fullname" class="form-group__input" 
                     title="Uppercase, lowercase, no special characters, can be Vietnamese"
-                    type="text" placeholder="John Doe" required>
-                <span class="form-group__message"></span>
+                    type="text" placeholder="John Doe">
+                <p class="errorMsg"></p>
             </div>
 
             <div class="form-group">
                 <label for="email" class="form-group__label">Email</label>
                 <input id="email" name="email" class="form-group__input" 
-                    type="text" placeholder="johndoe@gmail.com" required>
-                <span class="form-group__message"></span>
+                    type="text" placeholder="johndoe@gmail.com">
+                <p class="errorMsg"></p>
             </div>
 
             <div class="form-group">
                 <label for="password" class="form-group__label">Password</label>
                 <input id="password" name="password" class="form-group__input" type="password" placeholder="Password"
-                    title="8-32 characters, at least 1 uppercase and 1 lowercase" required>
-                <span class="form-group__message"></span>
+                    title="8-32 characters, at least 1 uppercase and 1 lowercase">
+                <p class="errorMsg"></p>
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation" class="form-group__label">Confirm Password</label>
                 <input id="password_confirmation" name="password_confirmation" class="form-group__input" 
-                    type="password" placeholder="Confirm Password" required>
-                <span class="form-group__message"></span>
+                    type="password" placeholder="Confirm Password">
+                <p class="errorMsg"></p>
             </div>
 
-            <button type="submit" class="form-submit">Sign Up</button>
+            <button type="submit" id="submitBtn">Sign Up</button>
         </form>
         <div class="popup" id="popup-signup">
             <img class="popup__tick" src="tick.png" alt="green tick of success popup">
